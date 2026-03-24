@@ -1,9 +1,9 @@
 ---
 title: FMDA DD17.2
-tagline: Chairmanwon's stippled Glock 17 V2 frame, full-size 9mm.
+tagline: FMDA stippled Glock 17 V2 frame, full-size 9mm.
 slug: fmda-dd17-2
 category: 3D Print
-tags: [glock, g17, fmda, chairmanwon, frame, 9mm]
+tags: [glock, g17, fmda, frame, 9mm]
 date: 2025-06-01
 downloads:
   - label: DD17.2 STL (Stippled)
@@ -16,7 +16,7 @@ downloads:
 
 ## Overview
 
-Chairmanwon's stippled Glock 17 V2 frame. Full-size duty/home-defense platform chambered in 9mm. This is the standard DD17.2 from the FMDA Chairmanwon V2 Gigapack.
+FMDA's stippled Glock 17 V2 frame. Full-size duty/home-defense platform chambered in 9mm. This is the standard DD17.2 from the FMDA V2 Gigapack.
 
 Two STL variants are included: the standard stippled version (microtexture) and a no-microtexture version for nylon or resin printers.
 

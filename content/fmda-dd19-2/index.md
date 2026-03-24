@@ -1,9 +1,9 @@
 ---
 title: FMDA DD19.2
-tagline: Chairmanwon's stippled Glock 19 V2 frame, compact 9mm.
+tagline: FMDA stippled Glock 19 V2 frame, compact 9mm.
 slug: fmda-dd19-2
 category: 3D Print
-tags: [glock, g19, fmda, chairmanwon, frame, 9mm]
+tags: [glock, g19, fmda, frame, 9mm]
 date: 2025-06-01
 downloads:
   - label: DD19.2 STL (Stippled)
@@ -22,7 +22,7 @@ downloads:
 
 ## Overview
 
-Chairmanwon's stippled Glock 19 V2 frame. The compact carry-size platform chambered in 9mm, the most popular Glock form factor. This is the standard DD19.2 from the FMDA Chairmanwon V2 Gigapack.
+FMDA's stippled Glock 19 V2 frame. The compact carry-size platform chambered in 9mm, the most popular Glock form factor. This is the standard DD19.2 from the FMDA V2 Gigapack.
 
 Multiple STL variants are included: stippled, no-microtexture, no finger grooves, OEM-ish with finger grooves, and a Strike80 G19 variant.
 

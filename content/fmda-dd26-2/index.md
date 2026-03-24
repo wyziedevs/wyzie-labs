@@ -1,9 +1,9 @@
 ---
 title: FMDA DD26.2
-tagline: Chairmanwon's stippled Glock 26 V2 frame, subcompact 9mm.
+tagline: FMDA stippled Glock 26 V2 frame, subcompact 9mm.
 slug: fmda-dd26-2
 category: 3D Print
-tags: [glock, g26, fmda, chairmanwon, frame, 9mm]
+tags: [glock, g26, fmda, frame, 9mm]
 date: 2025-06-01
 downloads:
   - label: DD26.2 STL (Stippled)
@@ -16,7 +16,7 @@ downloads:
 
 ## Overview
 
-Chairmanwon's stippled Glock 26 V2 frame. The subcompact pocket-size platform chambered in 9mm. This is the standard DD26.2 from the FMDA Chairmanwon V2 Gigapack.
+FMDA's stippled Glock 26 V2 frame. The subcompact pocket-size platform chambered in 9mm. This is the standard DD26.2 from the FMDA V2 Gigapack.
 
 Two STL variants are included: the standard stippled version (microtexture) and a no-microtexture version for nylon or resin printers.
 
