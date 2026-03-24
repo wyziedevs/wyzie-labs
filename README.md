@@ -1,6 +1,6 @@
 # Wyzie Labs
 
-Open-source design projects, 3D prints, and builds. Browse & download at [labs.wyzie.ru](https://labs.wyzie.ru).
+Open-source design projects, 3D prints, and builds. Browse & download at [lab.wyzie.io](https://lab.wyzie.io).
 
 ## Tech Stack
 
