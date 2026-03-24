@@ -19,7 +19,7 @@
 			clearTimeout(copyTimeout);
 			copyTimeout = setTimeout(() => (copied = false), 2000);
 		} catch {
-			// Clipboard API unavailable — fall back to prompt
+			// Clipboard API unavailable - fall back to prompt
 			window.prompt('Copy this email address:', 'hello@wyzie.io');
 		}
 	}
