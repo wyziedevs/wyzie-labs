@@ -35,7 +35,7 @@
 		]
 	},
 	"dependencies": {
-		"@lucide/svelte": "^1.6.0",
+		"@lucide/svelte": "^1.7.0",
 		"marked": "^17.0.5",
 		"yaml": "^2.8.3"
 	}

@@ -24,7 +24,7 @@
 	});
 </script>
 
-<header class="flex items-center justify-between pt-8">
+<header class="flex items-center justify-between pt-8 pb-2">
 	<a
 		href="/"
 		class="font-display text-2xl font-bold tracking-tight uppercase transition-[letter-spacing] duration-200 hover:tracking-wide"
@@ -87,9 +87,7 @@
 		{#each NAV_LINKS as link, i}
 			<a
 				href={link.href}
-				class="py-3 min-h-11 flex items-center text-sm hover:text-fg {isActive(
-					link.href,
-				)
+				class="py-3 min-h-11 flex items-center text-sm hover:text-fg {isActive(link.href)
 					? 'text-fg'
 					: 'text-muted'}"
 				aria-current={isActive(link.href) ? 'page' : undefined}

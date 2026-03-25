@@ -3,8 +3,8 @@ title: FMDA DD19.2
 tagline: FMDA stippled Glock 19 V2 frame, compact 9mm.
 slug: fmda-dd19-2
 category: 3D Print
-tags: [glock, g19, fmda, frame, 9mm]
-date: 2025-06-01
+tags: [glock, g19, fmda]
+date: 2026-03-25
 downloads:
   - label: DD19.2 STL (Stippled)
     url: /downloads/fmda-dd19-2/FMDA DD19.2.STL

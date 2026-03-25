@@ -4,6 +4,36 @@ import fileSizes from 'virtual:file-sizes';
 
 const DOWNLOADS_BASE = import.meta.env.VITE_DOWNLOADS_BASE || '';
 
+export interface Heading {
+	level: number;
+	text: string;
+	id: string;
+}
+
+function slugify(text: string): string {
+	return text
+		.toLowerCase()
+		.replace(/[^\w\s-]/g, '')
+		.replace(/\s+/g, '-')
+		.replace(/-+/g, '-')
+		.trim();
+}
+
+function parseHtml(body: string): { html: string; headings: Heading[] } {
+	const headings: Heading[] = [];
+	const renderer = new marked.Renderer();
+	const originalHeading = renderer.heading.bind(renderer);
+	renderer.heading = function ({ text, depth }: { text: string; depth: number }) {
+		const id = slugify(text);
+		if (depth >= 2 && depth <= 4) {
+			headings.push({ level: depth, text, id });
+		}
+		return `<h${depth} id="${id}">${text}</h${depth}>`;
+	};
+	const html = marked.parse(body, { async: false, renderer }) as string;
+	return { html, headings };
+}
+
 function formatBytes(bytes: number): string {
 	if (bytes < 1024) return `${bytes} B`;
 	if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
@@ -27,6 +57,7 @@ export interface Project {
 	tagline: string;
 	description: string;
 	html: string;
+	headings: Heading[];
 	category: string;
 	tags: string[];
 	date: string;
@@ -51,12 +82,14 @@ export const projects: Project[] = Object.entries(modules)
 		const { meta, body } = parseFrontmatter(raw);
 		const folderSlug = path.split('/').at(-2)!;
 		const date = String(meta.date ?? '');
+		const { html, headings } = parseHtml(body);
 		return {
 			slug: (meta.slug as string) || folderSlug,
 			title: (meta.title as string) || 'Untitled',
 			tagline: (meta.tagline as string) || '',
 			description: body,
-			html: marked.parse(body, { async: false }) as string,
+			html,
+			headings,
 			category: (meta.category as string) || '',
 			tags: (meta.tags as string[]) || [],
 			date,
@@ -83,6 +116,7 @@ export interface Subpage {
 	page: string;
 	title: string;
 	html: string;
+	headings: Heading[];
 }
 
 export function getSubpage(slug: string, page: string): Subpage | undefined {
@@ -90,10 +124,12 @@ export function getSubpage(slug: string, page: string): Subpage | undefined {
 	const raw = subpageModules[key];
 	if (!raw) return undefined;
 	const { meta, body } = parseFrontmatter(raw);
+	const { html, headings } = parseHtml(body);
 	return {
 		slug,
 		page,
 		title: (meta.title as string) || page,
-		html: marked.parse(body, { async: false }) as string,
+		html,
+		headings,
 	};
 }

@@ -1,10 +1,10 @@
 ---
 title: Menendez Magazine v2.0
-tagline: "3D-printable Glock magazines in multiple capacities: 10, 15, 17, 25, and 30 round."
+tagline: '3D-printable Glock magazines in multiple capacities: 10, 15, 17, 25, and 30 round.'
 slug: menendez-magazine-v2
 category: 3D Print
-tags: [glock, magazine, menendez, fmda, 9mm]
-date: 2025-06-01
+tags: [glock, magazine, 9mm]
+date: 2026-03-25
 downloads:
   - label: Menendez (17 Round) STL
     url: /downloads/menendez-magazine-v2/Mag Body - Menendez (17 Round) v2.0.stl
@@ -38,13 +38,13 @@ In dry-cycle testing, magazines lasted over 1,000 rounds without the body wearin
 
 ## Capacity Variants
 
-| Variant | Rounds | Notes |
-|---------|--------|-------|
-| Menendez | 17 | Standard G17 capacity |
-| Baby Menendez | 15 | Mid-size |
-| Mini Menendez | 10 | Restricted-state compliant |
-| Extendez | 30 | Extended |
-| FGC-9 | 25 | BWMod variant |
+| Variant       | Rounds | Notes                      |
+| ------------- | ------ | -------------------------- |
+| Menendez      | 17     | Standard G17 capacity      |
+| Baby Menendez | 15     | Mid-size                   |
+| Mini Menendez | 10     | Restricted-state compliant |
+| Extendez      | 30     | Extended                   |
+| FGC-9         | 25     | BWMod variant              |
 
 ## Print Settings
 

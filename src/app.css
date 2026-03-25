@@ -258,6 +258,7 @@
 		margin-top: 2rem;
 		margin-bottom: 0.75rem;
 		letter-spacing: -0.015em;
+		scroll-margin-top: 5rem;
 	}
 
 	.prose h3 {
@@ -265,6 +266,7 @@
 		font-weight: 600;
 		margin-top: 1.5rem;
 		margin-bottom: 0.5rem;
+		scroll-margin-top: 5rem;
 	}
 
 	.prose h4 {
@@ -272,6 +274,7 @@
 		font-weight: 600;
 		margin-top: 1.25rem;
 		margin-bottom: 0.5rem;
+		scroll-margin-top: 5rem;
 	}
 
 	.prose ul {

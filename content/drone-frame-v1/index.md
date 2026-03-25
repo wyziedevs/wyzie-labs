@@ -3,8 +3,8 @@ title: Drone Frame V1
 tagline: A lightweight 5-inch freestyle and racing FPV drone frame.
 slug: drone-frame-v1
 category: 3D Print
-tags: [fpv, drone, cad, pa12-cf, fusion360]
-date: 2025-11-12
+tags: [fpv, drone, cad]
+date: 2026-03-25
 downloads:
   - label: Drone Frame STL
     url: '#'

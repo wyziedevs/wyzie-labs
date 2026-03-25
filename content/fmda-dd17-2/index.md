@@ -3,8 +3,8 @@ title: FMDA DD17.2
 tagline: FMDA stippled Glock 17 V2 frame, full-size 9mm.
 slug: fmda-dd17-2
 category: 3D Print
-tags: [glock, g17, fmda, frame, 9mm]
-date: 2025-06-01
+tags: [glock, g17, fmda]
+date: 2026-03-25
 downloads:
   - label: DD17.2 STL (Stippled)
     url: /downloads/fmda-dd17-2/FMDA DD17.2.STL

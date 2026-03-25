@@ -3,8 +3,8 @@ title: FMDA DD26.2
 tagline: FMDA stippled Glock 26 V2 frame, subcompact 9mm.
 slug: fmda-dd26-2
 category: 3D Print
-tags: [glock, g26, fmda, frame, 9mm]
-date: 2025-06-01
+tags: [glock, g26, fmda]
+date: 2026-03-25
 downloads:
   - label: DD26.2 STL (Stippled)
     url: /downloads/fmda-dd26-2/FMDA DD26.2.STL
