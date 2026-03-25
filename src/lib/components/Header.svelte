@@ -54,17 +54,13 @@
 			class="relative icon-button"
 		>
 			<span
-				class="block transition-[transform,opacity] duration-200"
-				style="opacity: {open ? 0 : 1}; transform: rotate({open
-					? '45deg'
-					: '0deg'}); position: {open ? 'absolute' : 'relative'}; inset: {open
-					? '0'
-					: 'auto'}; display: flex; align-items: center; justify-content: center;"
+				class="absolute inset-0 flex items-center justify-center transition-[transform,opacity] duration-200"
+				style="opacity: {open ? 0 : 1}; transform: rotate({open ? '45deg' : '0deg'});"
 			>
 				<MenuIcon size={18} />
 			</span>
 			<span
-				class="block transition-[transform,opacity] duration-200"
+				class="absolute inset-0 flex items-center justify-center transition-[transform,opacity] duration-200"
 				style="opacity: {open ? 1 : 0}; transform: rotate({open ? '0deg' : '-45deg'});"
 			>
 				<XIcon size={18} />
@@ -75,7 +71,7 @@
 
 <div
 	id="mobile-menu"
-	class="grid md:hidden"
+	class="grid md:hidden bg-bg"
 	style="grid-template-rows: {open
 		? '1fr'
 		: '0fr'}; transition: grid-template-rows 0.3s var(--ease-smooth);"
@@ -86,12 +82,12 @@
 		class:border-b={open}
 		class:border-border={open}
 		class:pb-6={open}
-		class:pt-4={open}
+		class:pt-1={open}
 	>
 		{#each NAV_LINKS as link, i}
 			<a
 				href={link.href}
-				class="py-3 min-h-11 flex items-center text-sm hover:text-fg border-t border-border {isActive(
+				class="py-3 min-h-11 flex items-center text-sm hover:text-fg {isActive(
 					link.href,
 				)
 					? 'text-fg'

@@ -97,8 +97,10 @@
 		transition: color 0.35s var(--ease-smooth);
 	}
 
-	.contact-row:hover {
-		color: var(--color-bg);
+	@media (hover: hover) {
+		.contact-row:hover {
+			color: var(--color-bg);
+		}
 	}
 
 	/* Full-width link inside compound row */
@@ -120,8 +122,10 @@
 		transition: color 0.35s var(--ease-smooth);
 	}
 
-	.contact-row:hover .row-label {
-		color: var(--color-bg);
+	@media (hover: hover) {
+		.contact-row:hover .row-label {
+			color: var(--color-bg);
+		}
 	}
 
 	/* Icon base styling */
@@ -132,32 +136,39 @@
 			transform 0.35s var(--ease-smooth);
 	}
 
-	.contact-row:hover :global(.row-icon) {
-		color: var(--color-bg);
-	}
+	@media (hover: hover) {
+		.contact-row:hover :global(.row-icon) {
+			color: var(--color-bg);
+		}
 
-	/* Mail icon tilts on hover */
-	.contact-row:hover :global(.mail-icon) {
-		transform: rotate(-12deg);
-	}
+		/* Mail icon tilts on hover */
+		.contact-row:hover :global(.mail-icon) {
+			transform: rotate(-12deg);
+		}
 
-	/* Message icon scales on hover */
-	.contact-row:hover :global(.msg-icon) {
-		transform: scale(1.15);
+		/* Message icon scales on hover */
+		.contact-row:hover :global(.msg-icon) {
+			transform: scale(1.15);
+		}
 	}
 
 	/* Arrow slides in from bottom-left */
 	.contact-row :global(.arrow-icon) {
-		opacity: 0;
-		transform: translate(-4px, 4px);
 		transition:
 			opacity 0.25s var(--ease-smooth),
 			transform 0.25s var(--ease-smooth);
 	}
 
-	.contact-row:hover :global(.arrow-icon) {
-		opacity: 1;
-		transform: translate(0, 0);
+	@media (hover: hover) {
+		.contact-row :global(.arrow-icon) {
+			opacity: 0;
+			transform: translate(-4px, 4px);
+		}
+
+		.contact-row:hover :global(.arrow-icon) {
+			opacity: 1;
+			transform: translate(0, 0);
+		}
 	}
 
 	/* Copy button */
@@ -169,8 +180,6 @@
 		margin-left: 0.5rem;
 		flex-shrink: 0;
 		color: var(--color-muted);
-		opacity: 0;
-		transform: translateX(-4px);
 		cursor: pointer;
 		background: none;
 		border: none;
@@ -180,14 +189,21 @@
 			color 0.25s var(--ease-smooth);
 	}
 
-	.contact-row:hover .copy-btn {
-		opacity: 0.7;
-		transform: translateX(0);
-	}
+	@media (hover: hover) {
+		.copy-btn {
+			opacity: 0;
+			transform: translateX(-4px);
+		}
 
-	.copy-btn:hover {
-		opacity: 1 !important;
-		color: var(--color-bg);
+		.contact-row:hover .copy-btn {
+			opacity: 0.7;
+			transform: translateX(0);
+		}
+
+		.copy-btn:hover {
+			opacity: 1 !important;
+			color: var(--color-bg);
+		}
 	}
 
 	/* Checkmark confirmation */

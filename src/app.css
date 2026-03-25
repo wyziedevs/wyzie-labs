@@ -54,8 +54,10 @@
 			color 0.3s var(--ease-smooth);
 	}
 
-	.link-underline:hover {
-		background-size: 100% 1px;
+	@media (hover: hover) {
+		.link-underline:hover {
+			background-size: 100% 1px;
+		}
 	}
 
 	.card-fill {
@@ -72,9 +74,11 @@
 		z-index: 0;
 	}
 
-	.card-fill:hover::before {
-		clip-path: polygon(0 0, 135% 0, 115% 100%, -15% 100%);
-		will-change: clip-path;
+	@media (hover: hover) {
+		.card-fill:hover::before {
+			clip-path: polygon(0 0, 135% 0, 115% 100%, -15% 100%);
+			will-change: clip-path;
+		}
 	}
 
 	button:active:not(:disabled) {
@@ -136,9 +140,11 @@
 		transition-timing-function: var(--ease-smooth);
 	}
 
-	.icon-button:hover {
-		background: var(--color-fg);
-		color: var(--color-bg);
+	@media (hover: hover) {
+		.icon-button:hover {
+			background: var(--color-fg);
+			color: var(--color-bg);
+		}
 	}
 
 	@keyframes enter {
@@ -232,8 +238,10 @@
 		text-underline-offset: 2px;
 	}
 
-	.prose a:hover {
-		opacity: 0.7;
+	@media (hover: hover) {
+		.prose a:hover {
+			opacity: 0.7;
+		}
 	}
 
 	.prose strong {

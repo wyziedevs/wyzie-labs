@@ -32,14 +32,12 @@
 
 <a href="#main" class="skip-link">Skip to content</a>
 
-<div class="scroll-progress" aria-hidden="true"></div>
-
 <div class="flex flex-col min-h-screen max-w-360 mx-auto px-4 md:px-8">
-	<div class="stagger" style="--i: 0">
+	<div class="sticky top-0 z-50 bg-bg -mx-4 px-4 md:-mx-8 md:px-8 stagger" style="--i: 0">
 		<Header />
 	</div>
 
-	<main id="main" class="flex-1 py-8 md:py-12">
+	<main id="main" class="flex-1 py-8 md:py-12 relative z-0">
 		{@render children()}
 	</main>
 </div>
