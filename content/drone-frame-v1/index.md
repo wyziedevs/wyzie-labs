@@ -5,6 +5,7 @@ slug: drone-frame-v1
 category: 3D Print
 tags: [fpv, drone, cad]
 date: 2026-03-25
+flags: [unpublished]
 downloads:
   - label: Drone Frame STL
     url: '#'

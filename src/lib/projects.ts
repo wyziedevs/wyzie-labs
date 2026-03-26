@@ -79,6 +79,7 @@ export interface Project {
 	category: string;
 	tags: string[];
 	date: string;
+	flags?: string[];
 	downloads?: Download[];
 	links?: Link[];
 }
@@ -109,6 +110,7 @@ function createProject(meta: Record<string, unknown>, body: string, folderSlug: 
 		category: (meta.category as string) || '',
 		tags: (meta.tags as string[]) || [],
 		date: String(meta.date ?? ''),
+		flags: (meta.flags as string[]) || [],
 		downloads: ((meta.downloads as Download[]) || []).map((dl) => ({
 			...dl,
 			url: dl.url.startsWith('/downloads/') ? `${DOWNLOADS_BASE}${dl.url}` : dl.url,
@@ -130,19 +132,25 @@ export const projects: Project[] = Object.entries(modules)
 		const folderSlug = path.split('/').at(-2)!;
 		return createProject(meta, body, folderSlug);
 	})
+	.filter((p) => !p.flags?.includes('unpublished'))
 	.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export const CATEGORIES = ['All', ...Array.from(new Set(projects.map((p) => p.category)))];
 
 const subpageModules = import.meta.glob('/content/*/*.md', {
+	eager: true,
 	query: '?raw',
 	import: 'default',
-}) as Record<string, () => Promise<string>>;
+}) as Record<string, string>;
 
 export function subpageEntries(): { slug: string; page: string }[] {
-	return Object.keys(subpageModules)
-		.filter((key) => !key.endsWith('/index.md'))
-		.map((key) => {
+	return Object.entries(subpageModules)
+		.filter(([key]) => !key.endsWith('/index.md'))
+		.filter(([, raw]) => {
+			const { meta } = parseFrontmatter(raw);
+			return !(meta.flags as string[] || []).includes('unpublished');
+		})
+		.map(([key]) => {
 			const parts = key.split('/');
 			const slug = parts[2];
 			const page = parts[3].replace(/\.md$/, '');
@@ -156,14 +164,15 @@ export interface Subpage {
 	title: string;
 	html: string;
 	headings: Heading[];
+	flags?: string[];
 }
 
 export async function getSubpage(slug: string, page: string): Promise<Subpage | undefined> {
 	const key = `/content/${slug}/${page}.md`;
-	const loader = subpageModules[key];
-	if (!loader) return undefined;
-	const raw = await loader();
+	const raw = subpageModules[key];
+	if (!raw) return undefined;
 	const { meta, body } = parseFrontmatter(raw);
+	if ((meta.flags as string[] || []).includes('unpublished')) return undefined;
 	const { html, headings } = parseHtml(body);
 	return {
 		slug,
@@ -171,5 +180,6 @@ export async function getSubpage(slug: string, page: string): Promise<Subpage | 
 		title: (meta.title as string) || page,
 		html,
 		headings,
+		flags: (meta.flags as string[]) || [],
 	};
 }

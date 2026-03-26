@@ -1,3 +1,8 @@
+---
+title: Drone Frame V1 Whitepaper
+flags: [unpublished]
+---
+
 # Drone Frame V1: Full Build White Paper
 
 5-inch PA12-CF FPV freestyle / racing performance frame. Single-piece unibody with integrated camera mount. This document covers everything: printing, sourcing, assembly, electronics, tuning, and maiden flight.
