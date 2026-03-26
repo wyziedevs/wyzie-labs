@@ -2,6 +2,7 @@
 	import {
 		MailIcon,
 		MessageCircleIcon,
+		ArrowRightIcon,
 	} from '@lucide/svelte';
 	import PageContent from '$lib/components/PageContent.svelte';
 </script>
@@ -31,7 +32,8 @@
 				<span class="row-label">Email</span>
 			</span>
 			<span class="relative z-1 flex items-center gap-1.5">
-				<span class="text-sm">hello@wyzie.io</span>
+				<span class="text-sm row-value">hello@wyzie.io</span>
+				<ArrowRightIcon size={14} class="row-arrow" />
 			</span>
 		</a>
 
@@ -41,7 +43,8 @@
 				<span class="row-label">Discord</span>
 			</span>
 			<span class="relative z-1 flex items-center gap-1.5">
-				<span class="text-sm">Join community</span>
+				<span class="text-sm row-value">Join community</span>
+				<ArrowRightIcon size={14} class="row-arrow" />
 			</span>
 		</a>
 	</div>
@@ -93,7 +96,48 @@
 	@media (hover: hover) {
 		.contact-row:hover :global(.row-icon) {
 			color: var(--color-bg);
-			transform: rotate(-12deg);
+			transform: rotate(-12deg) scale(1.1);
+		}
+	}
+
+	/* Subtle idle float on mail icon */
+	.contact-row :global(.mail-icon) {
+		animation: float 3s ease-in-out infinite;
+	}
+
+	/* Subtle idle float on message icon (offset) */
+	.contact-row :global(.msg-icon) {
+		animation: float 3s ease-in-out infinite;
+		animation-delay: 0.5s;
+	}
+
+	/* Row value text */
+	.row-value {
+		transition: color 0.35s var(--ease-smooth);
+	}
+
+	@media (hover: hover) {
+		.contact-row:hover .row-value {
+			color: var(--color-bg);
+		}
+	}
+
+	/* Arrow indicator - hidden, slides in on hover */
+	.contact-row :global(.row-arrow) {
+		opacity: 0;
+		transform: translateX(-6px);
+		color: var(--color-muted);
+		transition:
+			opacity 0.3s var(--ease-smooth),
+			transform 0.3s var(--ease-smooth),
+			color 0.35s var(--ease-smooth);
+	}
+
+	@media (hover: hover) {
+		.contact-row:hover :global(.row-arrow) {
+			opacity: 1;
+			transform: translateX(0);
+			color: var(--color-bg);
 		}
 	}
 

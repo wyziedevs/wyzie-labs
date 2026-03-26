@@ -45,7 +45,9 @@
 		{@render children()}
 	</main>
 
-	<footer class="py-6 pb-(--safe-pb) text-xs text-muted">
-		<span>&copy; {new Date().getFullYear()} <a href="https://wyzie.io" class="text-muted link-underline hover:text-black">Wyzie.io</a></span>
+	<footer class="py-6 pb-(--safe-pb) text-xs text-muted animate-fade">
+		<span>&copy; {new Date().getFullYear()}
+			<a href="https://wyzie.io" class="text-muted link-underline hover:text-fg">Wyzie.io</a>
+		</span>
 	</footer>
 </div>

@@ -137,6 +137,17 @@ const subpageModules = import.meta.glob('/content/*/*.md', {
 	import: 'default',
 }) as Record<string, () => Promise<string>>;
 
+export function subpageEntries(): { slug: string; page: string }[] {
+	return Object.keys(subpageModules)
+		.filter((key) => !key.endsWith('/index.md'))
+		.map((key) => {
+			const parts = key.split('/');
+			const slug = parts[2];
+			const page = parts[3].replace(/\.md$/, '');
+			return { slug, page };
+		});
+}
+
 export interface Subpage {
 	slug: string;
 	page: string;

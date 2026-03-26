@@ -1,5 +1,9 @@
-import { projects, getSubpage } from '$lib/projects';
+import { projects, getSubpage, subpageEntries } from '$lib/projects';
 import { error } from '@sveltejs/kit';
+
+export function entries() {
+	return subpageEntries();
+}
 
 export async function load({ params }) {
 	const project = projects.find((p) => p.slug === params.slug);
