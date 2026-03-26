@@ -2,7 +2,6 @@
 	import ThemeToggle from './ThemeToggle.svelte';
 	import { MenuIcon, XIcon } from '@lucide/svelte';
 	import { page } from '$app/state';
-	import { tick } from 'svelte';
 
 	const NAV_LINKS = [
 		{ href: '/projects', label: 'Projects' },
@@ -20,12 +19,9 @@
 		return path === href || path.startsWith(href + '/');
 	}
 
-	async function toggleMenu() {
+	function toggleMenu() {
 		open = !open;
-		if (open) {
-			await tick();
-			document.querySelector<HTMLAnchorElement>('#mobile-menu a')?.focus();
-		} else {
+		if (!open) {
 			toggleBtn?.focus();
 		}
 	}
