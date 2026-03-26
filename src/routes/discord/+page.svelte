@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PageContent from '$lib/components/PageContent.svelte';
+	import { PageContent, ExternalLink } from '$lib/components';
 </script>
 
 <svelte:head>
@@ -12,12 +12,10 @@
 
 <PageContent title="Discord">
 	<div class="stagger flex flex-col gap-5 text-base leading-7" style="--i: 1">
-		<a
+		<ExternalLink
 			href="https://discord.com/invite/2mxraHBVtB"
-			target="_blank"
-			rel="noopener noreferrer"
 			class="inline-flex items-center gap-2 py-2.5 px-5 border border-border bg-fg text-bg text-sm font-medium hover:bg-bg hover:text-fg transition-colors w-fit"
-			>Join Discord</a
+			>Join Discord</ExternalLink
 		>
 	</div>
 </PageContent>

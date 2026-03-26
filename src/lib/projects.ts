@@ -22,16 +22,18 @@ function slugify(text: string): string {
 
 function parseHtml(body: string): { html: string; headings: Heading[] } {
 	const headings: Heading[] = [];
+	const idCounts = new Map<string, number>();
 	const renderer = new marked.Renderer();
-	const originalHeading = renderer.heading.bind(renderer);
 	renderer.heading = function ({ text, depth }: { text: string; depth: number }) {
-		const id = slugify(text);
+		const base = slugify(text);
+		const count = idCounts.get(base) ?? 0;
+		idCounts.set(base, count + 1);
+		const id = count === 0 ? base : `${base}-${count + 1}`;
 		if (depth >= 2 && depth <= 4) {
 			headings.push({ level: depth, text, id });
 		}
 		return `<h${depth} id="${id}">${text}</h${depth}>`;
 	};
-	const originalImage = renderer.image.bind(renderer);
 	renderer.image = function ({
 		href,
 		title,

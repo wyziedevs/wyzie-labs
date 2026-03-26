@@ -17,7 +17,7 @@
 		<span class="text-xs text-muted">{formatDate(date)}</span>
 	</div>
 	<h1
-		class="stagger font-display text-2xl sm:text-3xl font-bold tracking-tight leading-none wrap-break-word"
+		class="stagger font-display text-[clamp(1.5rem,3.5vw,1.875rem)] font-bold tracking-tight leading-tight wrap-break-word"
 		style="--i: 1"
 	>
 		{title}

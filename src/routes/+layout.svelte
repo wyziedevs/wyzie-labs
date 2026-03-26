@@ -2,7 +2,7 @@
 	import '../app.css';
 	import { browser } from '$app/environment';
 	import { onNavigate } from '$app/navigation';
-	import Header from '$lib/components/Header.svelte';
+	import { Header, ExternalLink } from '$lib/components';
 
 	let { children } = $props();
 
@@ -46,8 +46,11 @@
 	</main>
 
 	<footer class="py-6 pb-(--safe-pb) text-xs text-muted animate-fade">
-		<span>&copy; {new Date().getFullYear()}
-			<a href="https://wyzie.io" class="text-muted link-underline hover:text-fg">Wyzie.io</a>
+		<span
+			>&copy; {new Date().getFullYear()}
+			<ExternalLink href="https://wyzie.io" class="text-muted link-underline hover:text-fg"
+				>Wyzie.io</ExternalLink
+			>
 		</span>
 	</footer>
 </div>

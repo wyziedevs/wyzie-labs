@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { formatDate } from '$lib/utils';
+	import { PageTitle } from '$lib/components';
 
 	let { data }: { data: PageData } = $props();
 </script>
@@ -13,7 +14,7 @@
 	/>
 </svelte:head>
 
-<h1 class="stagger page-title mb-8" style="--i: 0">Projects</h1>
+<PageTitle class="stagger mb-8" style="--i: 0">Projects</PageTitle>
 
 <div class="overflow-x-auto -mx-(--safe-px) px-(--safe-px) md:mx-0 md:px-0">
 	<table class="w-full text-sm text-left border-collapse">
@@ -34,7 +35,7 @@
 					<td class="py-3 pr-4 max-w-xs">
 						<a
 							href="/projects/{project.slug}"
-							class="block min-h-[44px]"
+							class="block min-h-11"
 							aria-label="View {project.title}"
 						>
 							<span class="font-display font-bold link-underline">{project.title}</span>

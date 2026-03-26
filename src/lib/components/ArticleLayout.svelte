@@ -12,40 +12,17 @@
 	let { headings, children }: Props = $props();
 </script>
 
-<div class="article-layout">
+<div class="grid min-[1100px]:grid-cols-[minmax(0,1fr)_14rem]">
 	<article class="max-w-170">
 		{@render children()}
 	</article>
 
 	{#if headings.length > 0}
-		<aside class="toc-sidebar" use:reveal={{ delay: 80 }}>
+		<aside
+			class="hidden min-[1100px]:block min-[1100px]:sticky min-[1100px]:top-20 min-[1100px]:self-start min-[1100px]:max-h-[calc(100vh-6rem)] min-[1100px]:overflow-y-auto"
+			use:reveal={{ delay: 80 }}
+		>
 			<TableOfContents {headings} />
 		</aside>
 	{/if}
 </div>
-
-<style>
-	.article-layout {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr);
-	}
-
-	.toc-sidebar {
-		display: none;
-	}
-
-	@media (min-width: 1100px) {
-		.article-layout {
-			grid-template-columns: minmax(0, 1fr) 14rem;
-		}
-
-		.toc-sidebar {
-			display: block;
-			position: sticky;
-			top: 5rem;
-			align-self: start;
-			max-height: calc(100vh - 6rem);
-			overflow-y: auto;
-		}
-	}
-</style>

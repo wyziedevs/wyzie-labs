@@ -20,7 +20,7 @@
 						<li>
 							<a
 								href={dl.url}
-								class="group/dl flex items-center gap-3 py-3 min-h-[44px] text-sm link-underline min-w-0"
+								class="group/dl flex items-center gap-3 py-3 min-h-11 text-sm link-underline duration-450 min-w-0"
 								download
 								aria-label="Download {dl.label}{dl.size ? ` (${dl.size})` : ''}"
 							>
@@ -28,7 +28,7 @@
 								{#if dl.size}
 									<span class="text-xs text-muted">{dl.size}</span>
 								{/if}
-								<DownloadIcon size={14} class="text-muted" />
+								<DownloadIcon size={14} class="text-muted" aria-hidden="true" />
 							</a>
 						</li>
 					{/each}
@@ -44,12 +44,13 @@
 						<li>
 							<a
 								href={link.url}
-								class="group/ext flex items-center gap-3 py-3 min-h-[44px] text-sm link-underline min-w-0"
+								class="group/ext flex items-center gap-3 py-3 min-h-11 text-sm link-underline duration-450 min-w-0"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
 								<span class="flex-1 truncate">{link.label}</span>
-								<ExternalLinkIcon size={14} class="text-muted" />
+								<ExternalLinkIcon size={14} class="text-muted" aria-hidden="true" />
+								<span class="sr-only">(opens in new tab)</span>
 							</a>
 						</li>
 					{/each}

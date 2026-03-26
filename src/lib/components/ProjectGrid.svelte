@@ -14,7 +14,7 @@
 		No projects match your search. Try a broader term or clear the filter.
 	</p>
 {:else}
-	<div class="project-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+	<div class="animate-fade grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 		{#each projects as project, i (project.slug)}
 			<div class="stagger-fast" style="--i: {Math.min(i, 8)}">
 				<ProjectCard {project} />
@@ -22,9 +22,3 @@
 		{/each}
 	</div>
 {/if}
-
-<style>
-	.project-grid {
-		animation: fade 0.3s var(--ease-smooth) both;
-	}
-</style>

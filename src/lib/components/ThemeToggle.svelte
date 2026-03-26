@@ -2,13 +2,7 @@
 	import { browser } from '$app/environment';
 	import { SunIcon, MoonIcon } from '@lucide/svelte';
 
-	let dark = $state(false);
-
-	$effect(() => {
-		if (browser) {
-			dark = document.documentElement.classList.contains('dark');
-		}
-	});
+	let dark = $state(browser ? document.documentElement.classList.contains('dark') : false);
 
 	function toggle() {
 		dark = !dark;

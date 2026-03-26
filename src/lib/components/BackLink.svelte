@@ -4,10 +4,10 @@
 	interface Props {
 		href?: string;
 		label?: string;
-		className?: string;
+		class?: string;
 	}
 
-	let { href = '/', label = 'All projects', className = '' }: Props = $props();
+	let { href = '/', label = 'All projects', class: className = '' }: Props = $props();
 </script>
 
 <div class={className}>

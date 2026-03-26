@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import ArticleLayout from '$lib/components/ArticleLayout.svelte';
-	import BackLink from '$lib/components/BackLink.svelte';
+	import { ArticleLayout, BackLink, PageTitle } from '$lib/components';
 	import { reveal } from '$lib/actions/reveal';
 	import { enableCheckboxes } from '$lib/actions/checkboxes';
 
@@ -18,7 +17,7 @@
 <ArticleLayout headings={subpage.headings}>
 	<BackLink href="/projects/{project.slug}" label={project.title} />
 
-	<h1 class="stagger page-title mt-6 mb-8" style="--i: 0">{subpage.title}</h1>
+	<PageTitle class="stagger mt-6 mb-8" style="--i: 0">{subpage.title}</PageTitle>
 
 	<div class="prose reveal" use:reveal={{ delay: 60, threshold: 0 }} use:enableCheckboxes>
 		{@html subpage.html}

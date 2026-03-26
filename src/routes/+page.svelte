@@ -1,9 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { CATEGORIES } from '$lib/projects';
-	import SearchBar from '$lib/components/SearchBar.svelte';
-	import CategoryFilter from '$lib/components/CategoryFilter.svelte';
-	import ProjectGrid from '$lib/components/ProjectGrid.svelte';
+	import { SearchBar, CategoryFilter, ProjectGrid } from '$lib/components';
 
 	let { data }: { data: PageData } = $props();
 

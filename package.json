@@ -35,6 +35,7 @@
 		]
 	},
 	"dependencies": {
+		"@fontsource-variable/space-grotesk": "^5.2.10",
 		"@lucide/svelte": "^1.7.0",
 		"isomorphic-dompurify": "^3.7.1",
 		"marked": "^17.0.5",

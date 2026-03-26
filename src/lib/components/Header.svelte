@@ -2,6 +2,7 @@
 	import ThemeToggle from './ThemeToggle.svelte';
 	import { MenuIcon, XIcon } from '@lucide/svelte';
 	import { page } from '$app/state';
+	import { tick } from 'svelte';
 
 	const NAV_LINKS = [
 		{ href: '/projects', label: 'Projects' },
@@ -11,11 +12,22 @@
 	];
 
 	let open = $state(false);
+	let toggleBtn: HTMLButtonElement | undefined = $state();
 
 	function isActive(href: string) {
 		const path = page.url.pathname;
 		if (href === '/') return path === '/';
 		return path === href || path.startsWith(href + '/');
+	}
+
+	async function toggleMenu() {
+		open = !open;
+		if (open) {
+			await tick();
+			document.querySelector<HTMLAnchorElement>('#mobile-menu a')?.focus();
+		} else {
+			toggleBtn?.focus();
+		}
 	}
 
 	$effect(() => {
@@ -47,7 +59,8 @@
 	<div class="flex items-center gap-2 md:hidden">
 		<ThemeToggle />
 		<button
-			onclick={() => (open = !open)}
+			bind:this={toggleBtn}
+			onclick={toggleMenu}
 			aria-label={open ? 'Close menu' : 'Open menu'}
 			aria-expanded={open}
 			aria-controls="mobile-menu"
@@ -88,7 +101,7 @@
 		{#each NAV_LINKS as link, i}
 			<a
 				href={link.href}
-				class="py-3 min-h-[44px] flex items-center text-sm hover:text-fg {isActive(link.href)
+				class="py-3 min-h-11 flex items-center text-sm hover:text-fg {isActive(link.href)
 					? 'text-fg'
 					: 'text-muted'}"
 				aria-current={isActive(link.href) ? 'page' : undefined}

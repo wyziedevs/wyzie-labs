@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import PageTitle from './PageTitle.svelte';
 
 	interface Props {
 		title: string;
@@ -10,6 +11,6 @@
 </script>
 
 <article class="max-w-170">
-	<h1 class="stagger page-title mb-6" style="--i: 0">{title}</h1>
+	<PageTitle class="stagger mb-6" style="--i: 0">{title}</PageTitle>
 	{@render children()}
 </article>

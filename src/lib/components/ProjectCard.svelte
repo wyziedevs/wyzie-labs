@@ -15,14 +15,19 @@
 >
 	<div class="relative z-1 flex justify-between items-center gap-2 min-w-0">
 		<span class="label truncate">{project.category}</span>
-		<span class="text-xs text-muted group-hover:text-bg/70 uppercase whitespace-nowrap transition-colors duration-300"
+		<span
+			class="text-xs text-muted group-hover:text-bg/70 uppercase whitespace-nowrap transition-colors duration-300"
 			>{formatDate(project.date, 'short')}</span
 		>
 	</div>
-	<h2 class="relative z-1 font-display text-xl font-bold tracking-tight leading-tight line-clamp-2 transition-transform duration-300 ease-smooth">
+	<h2
+		class="relative z-1 font-display text-xl font-bold tracking-tight leading-tight line-clamp-2 transition-transform duration-300 ease-smooth"
+	>
 		{project.title}
 	</h2>
-	<p class="relative z-1 text-sm text-muted group-hover:text-bg/70 leading-relaxed flex-1 transition-colors duration-300">
+	<p
+		class="relative z-1 text-sm text-muted group-hover:text-bg/70 leading-relaxed flex-1 transition-colors duration-300"
+	>
 		{project.tagline}
 	</p>
 	<div class="relative z-1 flex items-center justify-between gap-2 mt-auto min-w-0">
@@ -30,12 +35,13 @@
 			{#each project.tags.slice(0, 3) as tag, ti}
 				<span
 					class="text-xs text-muted group-hover:text-bg/70 uppercase truncate transition-[color,transform] duration-300"
-					style="transition-delay: {ti * 30}ms;"
-				>#{tag}</span>
+					style="transition-delay: {ti * 30}ms;">#{tag}</span
+				>
 			{/each}
 		</div>
 		{#if project.downloads && project.downloads.length > 0}
-			<span class="text-xs text-muted group-hover:text-bg/70 whitespace-nowrap uppercase transition-colors duration-300"
+			<span
+				class="text-xs text-muted group-hover:text-bg/70 whitespace-nowrap uppercase transition-colors duration-300"
 				>{project.downloads.length} file{project.downloads.length !== 1 ? 's' : ''}</span
 			>
 		{/if}

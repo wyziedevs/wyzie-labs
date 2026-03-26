@@ -15,6 +15,47 @@
 	--ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* ── Utilities ── */
+
+@utility label {
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+@utility shadow-pressed {
+	box-shadow: 0 2px 8px color-mix(in srgb, var(--color-fg) 15%, transparent);
+}
+
+@utility stagger {
+	animation: enter 0.45s var(--ease-smooth) both;
+	animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+@utility stagger-fast {
+	animation: enter 0.35s var(--ease-smooth) both;
+	animation-delay: calc(var(--i, 0) * 40ms);
+}
+
+@utility animate-fade {
+	animation: fade 0.4s var(--ease-smooth) both;
+}
+
+@utility animate-wipe {
+	animation: wipe-in 0.5s var(--ease-smooth) both;
+}
+
+@utility animate-scale-in {
+	animation: scale-in 0.3s var(--ease-smooth) both;
+}
+
+@utility animate-float {
+	animation: float 3s ease-in-out infinite;
+}
+
+/* ── Base ── */
+
 @layer base {
 	:root {
 		--safe-px: max(1rem, env(safe-area-inset-left));
@@ -29,7 +70,7 @@
 
 	html {
 		font-family: var(--font-sans);
-		font-size: 14px;
+		font-size: 0.875rem;
 		background: var(--color-bg);
 		color: var(--color-fg);
 		font-kerning: normal;
@@ -95,6 +136,12 @@
 		}
 	}
 
+	@media (hover: none) {
+		.card-fill:active::before {
+			clip-path: polygon(0 0, 135% 0, 115% 100%, -15% 100%);
+		}
+	}
+
 	button:active:not(:disabled) {
 		transform: translateY(1px);
 	}
@@ -119,27 +166,6 @@
 		left: 0;
 	}
 
-	.label {
-		font-size: 0.75rem;
-		font-weight: 600;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
-	}
-
-	.page-title {
-		font-family: var(--font-display);
-		font-size: 1.875rem;
-		font-weight: 700;
-		letter-spacing: -0.025em;
-		text-transform: uppercase;
-	}
-
-	@media (min-width: 640px) {
-		.page-title {
-			font-size: 2.25rem;
-		}
-	}
-
 	.icon-button {
 		padding: 0.5rem;
 		min-width: 44px;
@@ -150,7 +176,7 @@
 		background: transparent;
 		cursor: pointer;
 		transition-property: color, background-color;
-		transition-duration: 150ms;
+		transition-duration: 200ms;
 		transition-timing-function: var(--ease-smooth);
 	}
 
@@ -191,41 +217,13 @@
 	}
 
 	@keyframes float {
-		0%, 100% { transform: translateY(0); }
-		50% { transform: translateY(-3px); }
-	}
-
-	@keyframes slide-arrow {
-		from {
-			opacity: 0;
-			transform: translateX(-6px);
+		0%,
+		100% {
+			transform: translateY(0);
 		}
-		to {
-			opacity: 1;
-			transform: translateX(0);
+		50% {
+			transform: translateY(-3px);
 		}
-	}
-
-	.stagger {
-		animation: enter 0.45s var(--ease-smooth) both;
-		animation-delay: calc(var(--i, 0) * 60ms);
-	}
-
-	.stagger-fast {
-		animation: enter 0.35s var(--ease-smooth) both;
-		animation-delay: calc(var(--i, 0) * 40ms);
-	}
-
-	.animate-fade {
-		animation: fade 0.4s var(--ease-smooth) both;
-	}
-
-	.animate-wipe {
-		animation: wipe-in 0.5s var(--ease-smooth) both;
-	}
-
-	.animate-scale-in {
-		animation: scale-in 0.3s var(--ease-smooth) both;
 	}
 
 	.reveal {
@@ -242,7 +240,7 @@
 	}
 
 	.prose {
-		font-size: 1rem;
+		font-size: 1.143rem;
 		line-height: 1.75;
 		color: var(--color-fg);
 	}
@@ -377,7 +375,6 @@
 		font-size: 0.925rem;
 		display: block;
 		overflow-x: auto;
-		-webkit-overflow-scrolling: touch;
 	}
 
 	.prose th,
@@ -435,7 +432,6 @@
 	::view-transition-new(root) {
 		animation: fade 0.2s var(--ease-smooth) both;
 	}
-
 }
 
 @media (prefers-reduced-motion: reduce) {

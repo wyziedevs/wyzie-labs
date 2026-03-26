@@ -1,9 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import ArticleHeader from '$lib/components/ArticleHeader.svelte';
-	import ArticleLayout from '$lib/components/ArticleLayout.svelte';
-	import BackLink from '$lib/components/BackLink.svelte';
-	import ResourceList from '$lib/components/ResourceList.svelte';
+	import { ArticleHeader, ArticleLayout, BackLink, ResourceList } from '$lib/components';
 	import { reveal } from '$lib/actions/reveal';
 	import { enableCheckboxes } from '$lib/actions/checkboxes';
 
@@ -20,7 +17,7 @@
 </svelte:head>
 
 <ArticleLayout headings={project.headings}>
-	<BackLink className="mb-8" />
+	<BackLink class="mb-8" />
 	<ArticleHeader
 		category={project.category}
 		date={project.date}
