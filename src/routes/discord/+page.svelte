@@ -1,3 +1,7 @@
+<script lang="ts">
+	import PageContent from '$lib/components/PageContent.svelte';
+</script>
+
 <svelte:head>
 	<title>Discord / Wyzie Labs</title>
 	<meta
@@ -6,14 +10,8 @@
 	/>
 </svelte:head>
 
-<article class="max-w-170">
-	<h1 class="stagger page-title mb-6" style="--i: 0">Discord</h1>
-
+<PageContent title="Discord">
 	<div class="stagger flex flex-col gap-5 text-base leading-7" style="--i: 1">
-		<p>
-			Join the Wyzie Labs community on Discord to get help, share builds, and connect with other
-			makers.
-		</p>
 		<a
 			href="https://discord.com/invite/2mxraHBVtB"
 			target="_blank"
@@ -22,4 +20,4 @@
 			>Join Discord</a
 		>
 	</div>
-</article>
+</PageContent>

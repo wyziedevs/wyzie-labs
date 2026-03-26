@@ -15,7 +15,7 @@
 
 <h1 class="stagger page-title mb-8" style="--i: 0">Projects</h1>
 
-<div class="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
+<div class="overflow-x-auto -mx-(--safe-px) px-(--safe-px) md:mx-0 md:px-0">
 	<table class="w-full text-sm text-left border-collapse">
 		<thead>
 			<tr class="border-b border-border">
@@ -34,16 +34,18 @@
 					<td class="py-3 pr-4 max-w-xs">
 						<a
 							href="/projects/{project.slug}"
-							class="font-display font-bold link-underline"
-							aria-label="View {project.title}">{project.title}</a
+							class="block min-h-[44px]"
+							aria-label="View {project.title}"
 						>
-						<p class="text-xs text-muted line-clamp-1">
-							{project.tagline}
-						</p>
-						<div class="flex gap-3 mt-1 sm:hidden">
-							<span class="text-xs text-muted">{project.category}</span>
-							<span class="text-xs text-muted">{formatDate(project.date, 'short')}</span>
-						</div>
+							<span class="font-display font-bold link-underline">{project.title}</span>
+							<span class="block text-xs text-muted line-clamp-1">
+								{project.tagline}
+							</span>
+							<span class="flex gap-3 mt-1 sm:hidden">
+								<span class="text-xs text-muted">{project.category}</span>
+								<span class="text-xs text-muted">{formatDate(project.date, 'short')}</span>
+							</span>
+						</a>
 					</td>
 					<td class="py-3 pr-4 text-muted hidden sm:table-cell">{project.category}</td>
 					<td class="py-3 pr-4 text-muted whitespace-nowrap hidden md:table-cell"

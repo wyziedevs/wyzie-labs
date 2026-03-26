@@ -72,6 +72,7 @@
 <div
 	id="mobile-menu"
 	class="grid md:hidden bg-bg"
+	inert={!open}
 	style="grid-template-rows: {open
 		? '1fr'
 		: '0fr'}; transition: grid-template-rows 0.3s var(--ease-smooth);"
@@ -87,7 +88,7 @@
 		{#each NAV_LINKS as link, i}
 			<a
 				href={link.href}
-				class="py-3 min-h-11 flex items-center text-sm hover:text-fg {isActive(link.href)
+				class="py-3 min-h-[44px] flex items-center text-sm hover:text-fg {isActive(link.href)
 					? 'text-fg'
 					: 'text-muted'}"
 				aria-current={isActive(link.href) ? 'page' : undefined}

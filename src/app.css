@@ -13,10 +13,20 @@
 	--color-border: #000;
 	--color-muted: #525252;
 	--ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
-	--radius-none: 0;
 }
 
 @layer base {
+	:root {
+		--safe-px: max(1rem, env(safe-area-inset-left));
+		--safe-pb: max(1.5rem, env(safe-area-inset-bottom));
+	}
+
+	@media (min-width: 768px) {
+		:root {
+			--safe-px: max(2rem, env(safe-area-inset-left));
+		}
+	}
+
 	html {
 		font-family: var(--font-sans);
 		font-size: 14px;
@@ -128,8 +138,8 @@
 
 	.icon-button {
 		padding: 0.5rem;
-		min-width: 2.75rem;
-		min-height: 2.75rem;
+		min-width: 44px;
+		min-height: 44px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -166,20 +176,6 @@
 		}
 		to {
 			clip-path: inset(0 0 0 0);
-		}
-	}
-
-	@keyframes spin-half {
-		from {
-			transform: rotate(0deg);
-			opacity: 0;
-		}
-		50% {
-			opacity: 1;
-		}
-		to {
-			transform: rotate(180deg);
-			opacity: 1;
 		}
 	}
 
@@ -340,6 +336,7 @@
 		height: auto;
 		border-radius: 4px;
 		margin-bottom: 1.25rem;
+		content-visibility: auto;
 	}
 
 	.prose table {
@@ -347,6 +344,9 @@
 		border-collapse: collapse;
 		margin-bottom: 1.25rem;
 		font-size: 0.925rem;
+		display: block;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
 	}
 
 	.prose th,
@@ -405,26 +405,6 @@
 		animation: fade 0.2s var(--ease-smooth) both;
 	}
 
-	.scroll-progress {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 2px;
-		background: var(--color-fg);
-		transform-origin: left;
-		transform: scaleX(0);
-		z-index: 50;
-		pointer-events: none;
-		animation: scroll-progress linear both;
-		animation-timeline: scroll();
-	}
-
-	@keyframes scroll-progress {
-		to {
-			transform: scaleX(1);
-		}
-	}
 }
 
 @media (prefers-reduced-motion: reduce) {

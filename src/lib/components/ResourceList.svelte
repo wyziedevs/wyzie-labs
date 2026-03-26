@@ -20,7 +20,7 @@
 						<li>
 							<a
 								href={dl.url}
-								class="group/dl flex items-center gap-3 py-3 min-h-11 text-sm link-underline min-w-0"
+								class="group/dl flex items-center gap-3 py-3 min-h-[44px] text-sm link-underline min-w-0"
 								download
 								aria-label="Download {dl.label}{dl.size ? ` (${dl.size})` : ''}"
 							>
@@ -44,7 +44,7 @@
 						<li>
 							<a
 								href={link.url}
-								class="group/ext flex items-center gap-3 py-3 min-h-11 text-sm link-underline min-w-0"
+								class="group/ext flex items-center gap-3 py-3 min-h-[44px] text-sm link-underline min-w-0"
 								target="_blank"
 								rel="noopener noreferrer"
 							>

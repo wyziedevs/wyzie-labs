@@ -13,7 +13,7 @@
 <div class={className}>
 	<a
 		{href}
-		class="group inline-flex items-center gap-1.5 pb-1.5 pt-3 text-sm text-muted transition-colors duration-150 ease-smooth hover:text-fg link-underline"
+		class="group inline-flex items-center gap-1.5 text-sm text-muted transition-colors duration-150 ease-smooth hover:text-fg link-underline"
 	>
 		<ArrowLeftIcon
 			size={14}

@@ -1,5 +1,6 @@
 import yaml from 'yaml';
 import { marked } from 'marked';
+import DOMPurify from 'isomorphic-dompurify';
 import fileSizes from 'virtual:file-sizes';
 
 const DOWNLOADS_BASE = import.meta.env.VITE_DOWNLOADS_BASE || '';
@@ -30,7 +31,23 @@ function parseHtml(body: string): { html: string; headings: Heading[] } {
 		}
 		return `<h${depth} id="${id}">${text}</h${depth}>`;
 	};
-	const html = marked.parse(body, { async: false, renderer }) as string;
+	const originalImage = renderer.image.bind(renderer);
+	renderer.image = function ({
+		href,
+		title,
+		text,
+	}: {
+		href: string;
+		title: string | null;
+		text: string;
+	}) {
+		const titleAttr = title ? ` title="${title}"` : '';
+		return `<img src="${href}" alt="${text}"${titleAttr} loading="lazy" decoding="async" />`;
+	};
+	const raw = marked.parse(body, { async: false, renderer }) as string;
+	const html = DOMPurify.sanitize(raw, {
+		ADD_ATTR: ['loading', 'decoding'],
+	});
 	return { html, headings };
 }
 
@@ -55,7 +72,6 @@ export interface Project {
 	slug: string;
 	title: string;
 	tagline: string;
-	description: string;
 	html: string;
 	headings: Heading[];
 	category: string;
@@ -71,6 +87,35 @@ function parseFrontmatter(raw: string): { meta: Record<string, unknown>; body: s
 	return { meta: yaml.parse(match[1]) ?? {}, body: match[2].trim() };
 }
 
+function createProject(meta: Record<string, unknown>, body: string, folderSlug: string): Project {
+	let cached: { html: string; headings: Heading[] } | null = null;
+	function getParsed() {
+		if (!cached) cached = parseHtml(body);
+		return cached;
+	}
+
+	return {
+		slug: (meta.slug as string) || folderSlug,
+		title: (meta.title as string) || 'Untitled',
+		tagline: (meta.tagline as string) || '',
+		get html() {
+			return getParsed().html;
+		},
+		get headings() {
+			return getParsed().headings;
+		},
+		category: (meta.category as string) || '',
+		tags: (meta.tags as string[]) || [],
+		date: String(meta.date ?? ''),
+		downloads: ((meta.downloads as Download[]) || []).map((dl) => ({
+			...dl,
+			url: dl.url.startsWith('/downloads/') ? `${DOWNLOADS_BASE}${dl.url}` : dl.url,
+			size: dl.size || (fileSizes[dl.url] ? formatBytes(fileSizes[dl.url]) : undefined),
+		})),
+		links: (meta.links as Link[]) || [],
+	};
+}
+
 const modules = import.meta.glob('/content/*/index.md', {
 	eager: true,
 	query: '?raw',
@@ -81,35 +126,16 @@ export const projects: Project[] = Object.entries(modules)
 	.map(([path, raw]) => {
 		const { meta, body } = parseFrontmatter(raw);
 		const folderSlug = path.split('/').at(-2)!;
-		const date = String(meta.date ?? '');
-		const { html, headings } = parseHtml(body);
-		return {
-			slug: (meta.slug as string) || folderSlug,
-			title: (meta.title as string) || 'Untitled',
-			tagline: (meta.tagline as string) || '',
-			description: body,
-			html,
-			headings,
-			category: (meta.category as string) || '',
-			tags: (meta.tags as string[]) || [],
-			date,
-			downloads: ((meta.downloads as Download[]) || []).map((dl) => ({
-				...dl,
-				url: dl.url.startsWith('/downloads/') ? `${DOWNLOADS_BASE}${dl.url}` : dl.url,
-				size: dl.size || (fileSizes[dl.url] ? formatBytes(fileSizes[dl.url]) : undefined),
-			})),
-			links: (meta.links as Link[]) || [],
-		} satisfies Project;
+		return createProject(meta, body, folderSlug);
 	})
 	.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export const CATEGORIES = ['All', ...Array.from(new Set(projects.map((p) => p.category)))];
 
 const subpageModules = import.meta.glob('/content/*/*.md', {
-	eager: true,
 	query: '?raw',
 	import: 'default',
-}) as Record<string, string>;
+}) as Record<string, () => Promise<string>>;
 
 export interface Subpage {
 	slug: string;
@@ -119,10 +145,11 @@ export interface Subpage {
 	headings: Heading[];
 }
 
-export function getSubpage(slug: string, page: string): Subpage | undefined {
+export async function getSubpage(slug: string, page: string): Promise<Subpage | undefined> {
 	const key = `/content/${slug}/${page}.md`;
-	const raw = subpageModules[key];
-	if (!raw) return undefined;
+	const loader = subpageModules[key];
+	if (!loader) return undefined;
+	const raw = await loader();
 	const { meta, body } = parseFrontmatter(raw);
 	const { html, headings } = parseHtml(body);
 	return {

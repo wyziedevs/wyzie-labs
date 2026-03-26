@@ -1,6 +1,6 @@
 ---
 title: Optimal Firearm Printing Orientations
-tagline: Why rails-down at 45° is the strongest way to 3D print a firearm frame.
+tagline: Why rails-down at 40° is the strongest way to 3D print a firearm frame.
 slug: firearm-printing-orientations
 category: 3D Design
 tags: [printing, orientation, guide]
@@ -11,7 +11,7 @@ date: 2026-03-25
 
 ## Overview
 
-Print your frame **rails down**, rotated **45° so the muzzle points toward the build plate**. This maximizes layer adhesion across every critical stress zone.
+Print your frame **rails down**, rotated **40° so the muzzle points toward the build plate**. This maximizes layer adhesion across every critical stress zone.
 
 ## Why it Matters
 
@@ -31,9 +31,9 @@ Frame sits on the rails. Layers stack parallel to slide travel, rail surfaces bo
 
 ---
 
-3. **Rails Down + 45° (Strongest)**
+3. **Rails Down + 40° (Strongest)**
 
-Rotate the rails-down frame 45° so the muzzle angles toward the build plate. This is the recommended orientation because:
+Rotate the rails-down frame 40° so the muzzle angles toward the build plate. This is the recommended orientation because:
 
 - Diagonal layers cross more stress paths no single failure plane aligns with any force direction
 - Front rail area gets compressive loading instead of tension across layer lines

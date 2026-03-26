@@ -37,7 +37,7 @@
 			oninput={(e) => oninput(e.currentTarget.value)}
 			placeholder="Search projects..."
 			maxlength={200}
-			class="w-full py-2.5 px-3 border border-border bg-bg text-fg text-sm outline-none focus:outline-2 focus:outline-fg placeholder:text-muted peer"
+			class="w-full py-2.5 px-3 min-h-[44px] border border-border bg-bg text-fg text-sm outline-none focus:outline-2 focus:outline-fg placeholder:text-muted peer"
 		/>
 		{#if !value}
 			<kbd
