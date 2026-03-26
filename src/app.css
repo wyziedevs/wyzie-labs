@@ -137,7 +137,7 @@
 	}
 
 	@media (hover: none) {
-		.card-fill:active::before {
+		.card-fill.tapped::before {
 			clip-path: polygon(0 0, 135% 0, 115% 100%, -15% 100%);
 		}
 	}
@@ -194,6 +194,15 @@
 		}
 	}
 
+	@keyframes card-fill-tap {
+		from {
+			clip-path: polygon(0 0, 0 0, -15% 100%, -15% 100%);
+		}
+		to {
+			clip-path: polygon(0 0, 135% 0, 115% 100%, -15% 100%);
+		}
+	}
+
 	@keyframes fade {
 		from {
 			opacity: 0;
@@ -245,6 +254,11 @@
 		*::after {
 			animation: none !important;
 			transition: none !important;
+		}
+
+		/* Allow the fill animation only on a genuine tap */
+		.card-fill.tapped::before {
+			animation: card-fill-tap 0.7s var(--ease-smooth) forwards !important;
 		}
 
 		.reveal {

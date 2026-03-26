@@ -7,11 +7,41 @@
 	}
 
 	let { project }: Props = $props();
+
+	let tapped = $state(false);
+	let touchStartX = 0;
+	let touchStartY = 0;
+	let scrolled = false;
+
+	function handleTouchStart(e: TouchEvent) {
+		touchStartX = e.touches[0].clientX;
+		touchStartY = e.touches[0].clientY;
+		scrolled = false;
+	}
+
+	function handleTouchMove(e: TouchEvent) {
+		const dx = Math.abs(e.touches[0].clientX - touchStartX);
+		const dy = Math.abs(e.touches[0].clientY - touchStartY);
+		if (dx > 8 || dy > 8) scrolled = true;
+	}
+
+	function handleTouchEnd() {
+		if (!scrolled) {
+			tapped = true;
+			setTimeout(() => {
+				tapped = false;
+			}, 700);
+		}
+	}
 </script>
 
 <a
 	href="/projects/{project.slug}"
 	class="card-fill group relative flex flex-col gap-3 p-4 sm:p-6 border border-border -mt-px -ml-px bg-bg min-h-40 sm:min-h-50 [@media(hover:hover)]:hover:text-bg overflow-hidden"
+	class:tapped
+	ontouchstart={handleTouchStart}
+	ontouchmove={handleTouchMove}
+	ontouchend={handleTouchEnd}
 >
 	<div class="relative z-1 flex justify-between items-center gap-2 min-w-0">
 		<span class="label truncate">{project.category}</span>
