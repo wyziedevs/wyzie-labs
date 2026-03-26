@@ -4,6 +4,11 @@
  * Optionally pass { delay: number } for stagger timing.
  */
 export function reveal(node: HTMLElement, options?: { delay?: number; threshold?: number }) {
+	if (window.matchMedia('(pointer: coarse)').matches) {
+		node.classList.add('visible');
+		return { destroy() {} };
+	}
+
 	const delay = options?.delay ?? 0;
 	const threshold = options?.threshold ?? 0.15;
 

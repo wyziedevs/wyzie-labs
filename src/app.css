@@ -239,6 +239,20 @@
 		transform: translateY(0);
 	}
 
+	@media (pointer: coarse) {
+		*,
+		*::before,
+		*::after {
+			animation: none !important;
+			transition: none !important;
+		}
+
+		.reveal {
+			opacity: 1 !important;
+			transform: none !important;
+		}
+	}
+
 	.prose {
 		font-size: 1.143rem;
 		line-height: 1.75;
