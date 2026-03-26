@@ -19,6 +19,7 @@
 
 <div class="article-layout">
 	<article class="max-w-170">
+		<BackLink href="/projects" className="mb-8" />
 		<ArticleHeader
 			category={project.category}
 			date={project.date}
@@ -35,7 +36,6 @@
 				<ResourceList downloads={project.downloads} links={project.links} />
 			</div>
 		{/if}
-		<BackLink href="/projects" className="mt-8" />
 	</article>
 
 	{#if project.headings.length > 0}

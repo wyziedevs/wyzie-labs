@@ -7,6 +7,8 @@ tags: [printing, orientation, guide]
 date: 2026-03-25
 ---
 
+![Firearm Printing Orientations](/content/firearm-printing-orientations/example.png)
+
 ## Overview
 
 Print your frame **rails down**, rotated **45° so the muzzle points toward the build plate**. This maximizes layer adhesion across every critical stress zone.
