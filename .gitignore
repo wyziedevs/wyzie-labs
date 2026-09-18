@@ -28,3 +28,6 @@ Thumbs.db
 
 # large download files (hosted on VPS)
 static/downloads/
+
+# copied from content/ at build time (vite.config.ts contentAssets)
+static/content/
