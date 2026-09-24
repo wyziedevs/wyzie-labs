@@ -21,13 +21,16 @@
 		"@types/node": "^25.5.0",
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.5.1",
-		"svelte": "^5.55.0",
+		"svelte": "^5.57.1",
 		"svelte-check": "^4.4.5",
 		"tailwindcss": "^4.2.2",
 		"typescript": "^5.9.3",
 		"vite": "^6.4.1"
 	},
 	"pnpm": {
+		"overrides": {
+			"devalue@<5.9.2": "^5.9.2"
+		},
 		"onlyBuiltDependencies": [
 			"@parcel/watcher",
 			"esbuild",
@@ -37,7 +40,7 @@
 	"dependencies": {
 		"@fontsource-variable/space-grotesk": "^5.2.10",
 		"@lucide/svelte": "^1.7.0",
-		"isomorphic-dompurify": "^3.7.1",
+		"isomorphic-dompurify": "^3.19.0",
 		"marked": "^17.0.5",
 		"yaml": "^2.8.3"
 	}
